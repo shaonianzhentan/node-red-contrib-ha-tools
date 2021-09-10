@@ -10,7 +10,8 @@
   ],
   "node-red": {
     "nodes": {
-      "bemfa": "bemfa/bemfa.js"
+      "bemfa": "bemfa/bemfa.js",
+      "xiaodu": "xiaodu/xiaodu.js"
     }
   },
   "scripts": {
