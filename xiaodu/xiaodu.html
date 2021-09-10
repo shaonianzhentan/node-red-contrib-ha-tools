@@ -1,0 +1,27 @@
+<script type="text/html" data-template-name="ha-tools-xiaodu">
+    <div class="form-row">
+        <label for="node-input-cookie"> Cookie </label>
+        <select id="node-input-cookie"></select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-botId"> botId </label>
+        <select id="node-input-botId" placeholder="技能ID"></select>
+    </div>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('ha-tools-xiaodu', {
+        category: '家庭助理',
+        color: '#C0DEED',
+        icon: "font-awesome/fa-cloud",
+        paletteLabel: '小度音箱',
+        defaults: {
+            cookie: { value: "", required: true },
+            botId: { value: "", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        label: function () {
+            return "小度音箱";
+        }
+    });
+</script>
