@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('ha-tools-homeassistant_config', {
+    RED.nodes.registerType('ha-tools-ha_config', {
         category: 'config',
         defaults: {
             hassUrl: { value: "http://localhost:8123", required: true },
@@ -10,7 +10,7 @@
         }
     });
 </script>
-<script type="text/html" data-template-name="ha-tools-homeassistant_config">
+<script type="text/html" data-template-name="ha-tools-ha_config">
     <div class="form-row">
         <label for="node-config-input-host">HA URL</label>
         <input type="text" id="node-config-input-hassUrl">

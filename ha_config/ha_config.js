@@ -1,7 +1,7 @@
 const HomeAssistant = require('homeassistant');
 
 module.exports = function (RED) {
-    RED.nodes.registerType("ha-tools-homeassistant_config", class {
+    RED.nodes.registerType("ha-tools-ha_config", class {
         constructor(cfg) {
             RED.nodes.createNode(this, cfg);
             const { hassUrl, token } = cfg

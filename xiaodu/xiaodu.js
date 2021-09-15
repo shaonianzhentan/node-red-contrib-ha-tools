@@ -2,6 +2,7 @@ const axios = require('axios');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 
+// 多命令执行
 async function xiaoduCommand(query, botId, cookie) {
     console.log('获取Token信息')
     let res = await axios({
@@ -96,24 +97,58 @@ async function xiaoduCommand(query, botId, cookie) {
     }
 }
 
+// 单命令执行
+async function xiaoduBox(text, headers) {
+    await fetch('https://dueros-h2.baidu.com/dlp/controller/send_to_server', {
+        method: 'POST',
+        body: JSON.stringify(
+            {
+                "to_server": {
+                    "header": {
+                        "dialogRequestId": "",
+                        "messageId": "346f9d85-0a84-441b-a966-005b4c7cd58c",
+                        "name": "LinkClicked",
+                        "namespace": "dlp.screen"
+                    },
+                    "payload": {
+                        "initiator": {
+                            "type": "USER_CLICK"
+                        },
+                        "token": "",
+                        "url": `dueros://server.dueros.ai/query?q=${encodeURIComponent(text)}`
+                    }
+                },
+                "uuid": headers.uuid
+            }
+        ),
+        headers
+    })
+}
+
 module.exports = function (RED) {
     RED.nodes.registerType('ha-tools-xiaodu', function (config) {
         RED.nodes.createNode(this, config);
         const node = this
         const { botId, cookie } = config
         if (cookie) {
-            node.on('input', function (msg) {
-                const { payload } = msg
+            node.on('input', async function (msg) {
+                const { payload, xiaodu } = msg
                 node.status({ fill: "blue", shape: "ring", text: "发送命令" });
-                xiaoduCommand(payload, botId, cookie).then((data) => {
-                    node.send(data)
+                try {
+                    // 使用小度音箱
+                    if (xiaodu) {
+                        await xiaoduBox(xiaodu, config.headers)
+                    } else {
+                        const data = await xiaoduCommand(payload, botId, cookie)
+                        node.send(data)
+                    }
                     node.status({ fill: "green", shape: "ring", text: "发送成功" });
-                }).catch((ex) => {
-                    this.status({ fill: "red", shape: "ring", text: ex });
-                })
+                } catch (ex) {
+                    node.status({ fill: "red", shape: "ring", text: ex });
+                }
             })
         } else {
-            this.status({ fill: "red", shape: "ring", text: "未配置Cookie" });
+            node.status({ fill: "red", shape: "ring", text: "未配置Cookie" });
         }
     })
 }

@@ -12,7 +12,8 @@
     "nodes": {
       "bemfa": "bemfa/bemfa.js",
       "xiaodu": "xiaodu/xiaodu.js",
-      "homeassistant_config": "homeassistant_config/homeassistant_config.js",
+      "yoosee": "yoosee/yoosee.js",
+      "ha_config": "ha_config/ha_config.js",
       "call_service": "call_service/call_service.js",
       "fire_event": "fire_event/fire_event.js",
       "bluetooth_tracker": "bluetooth_tracker/bluetooth_tracker.js",
