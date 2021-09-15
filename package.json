@@ -1,12 +1,10 @@
 {
   "name": "node-red-contrib-ha-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "我使用的一些小工具",
   "keywords": [
     "node-red",
-    "ha-tools",
-    "homeassistant",
-    "home-assistant"
+    "ha-tools"
   ],
   "node-red": {
     "nodes": {
