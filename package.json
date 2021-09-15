@@ -11,6 +11,7 @@
       "bemfa": "bemfa/bemfa.js",
       "xiaodu": "xiaodu/xiaodu.js",
       "yoosee": "yoosee/yoosee.js",
+      "screenshot": "screenshot/screenshot.js",
       "ha_config": "ha_config/ha_config.js",
       "call_service": "call_service/call_service.js",
       "fire_event": "fire_event/fire_event.js",
@@ -38,6 +39,7 @@
     "input-event": "^1.2.6",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
-    "ping": "^0.4.1"
+    "ping": "^0.4.1",
+    "screenshot-desktop": "^1.12.7"
   }
 }

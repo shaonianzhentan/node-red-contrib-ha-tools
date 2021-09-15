@@ -1,5 +1,3 @@
-const HomeAssistant = require('../HomeAssistant')
-
 module.exports = function (RED) {
     RED.nodes.registerType('ha-tools-call_service', function (cfg) {
         RED.nodes.createNode(this, cfg);
