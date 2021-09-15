@@ -1,4 +1,4 @@
-const HomeAssistant = require('../HomeAssistant')
+const HomeAssistant = require('./ha')
 
 module.exports = function (RED) {
     RED.nodes.registerType('ha-tools-bemfa', function (config) {
@@ -36,7 +36,7 @@ module.exports = function (RED) {
                 });
                 // 订阅
                 entitys.forEach(({ topic_id }) => {
-                    console.log('訂閲', topic_id)
+                    console.log('订阅', topic_id)
                     node.server.client.subscribe(topic_id, { qos: 0 });
                 })
                 node.status({ fill: "green", shape: "ring", text: "配置成功" });
