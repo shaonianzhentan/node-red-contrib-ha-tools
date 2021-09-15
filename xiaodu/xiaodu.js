@@ -100,13 +100,14 @@ module.exports = function (RED) {
     RED.nodes.registerType('ha-tools-xiaodu', function (config) {
         RED.nodes.createNode(this, config);
         const node = this
+        const { botId, cookie } = config
         if (cookie) {
             node.on('input', function (msg) {
                 const { payload } = msg
                 node.status({ fill: "blue", shape: "ring", text: "发送命令" });
-                xiaoduCommand(payload, config.botId, config.cookie).then((data) => {
+                xiaoduCommand(payload, botId, cookie).then((data) => {
                     node.send(data)
-                    node.status({ fill: "blue", shape: "ring", text: "发送成功" });
+                    node.status({ fill: "green", shape: "ring", text: "发送成功" });
                 }).catch((ex) => {
                     this.status({ fill: "red", shape: "ring", text: ex });
                 })

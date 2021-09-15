@@ -11,7 +11,12 @@
   "node-red": {
     "nodes": {
       "bemfa": "bemfa/bemfa.js",
-      "xiaodu": "xiaodu/xiaodu.js"
+      "xiaodu": "xiaodu/xiaodu.js",
+      "homeassistant_config": "homeassistant_config/homeassistant_config.js",
+      "call_service": "call_service/call_service.js",
+      "fire_event": "fire_event/fire_event.js",
+      "bluetooth_tracker": "bluetooth_tracker/bluetooth_tracker.js",
+      "keyboard": "keyboard/keyboard.js"
     }
   },
   "scripts": {

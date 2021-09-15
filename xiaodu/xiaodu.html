@@ -1,16 +1,16 @@
 <script type="text/html" data-template-name="ha-tools-xiaodu">
     <div class="form-row">
         <label for="node-input-cookie"> Cookie </label>
-        <select id="node-input-cookie"></select>
+        <input type="text" id="node-input-cookie" placeholder="小度技能开放平台的登录Cookie" />
     </div>
     <div class="form-row">
         <label for="node-input-botId"> botId </label>
-        <select id="node-input-botId" placeholder="技能ID"></select>
+        <input type="text" id="node-input-botId" placeholder="技能ID" />
     </div>
 </script>
 <script type="text/javascript">
     RED.nodes.registerType('ha-tools-xiaodu', {
-        category: '家庭助理',
+        category: '我的小工具',
         color: '#C0DEED',
         icon: "font-awesome/fa-cloud",
         paletteLabel: '小度音箱',

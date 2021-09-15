@@ -1,0 +1,27 @@
+<script type="text/html" data-template-name="ha-tools-yoosee">
+    <div class="form-row">
+        <label for="node-input-ip"> IP地址 </label>
+        <input type="text" id="node-input-ip" placeholder="摄像头的IP" />
+    </div>
+    <div class="form-tips"><b>提示:</b> 
+        上：UP、下：DWON、右：LEFT、右：RIGHT
+        <hr />        
+        一定要注意下的英文单词就是错的，别自作聪明改正
+    </div>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('ha-tools-yoosee', {
+        category: '我的小工具',
+        color: '#C0DEED',
+        icon: "font-awesome/fa-camera",
+        paletteLabel: 'Yoosee摄像头控制',
+        defaults: {
+            ip: { value: "", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        label: function () {
+            return this.name || "Yoosee摄像头控制";
+        }
+    });
+</script>
