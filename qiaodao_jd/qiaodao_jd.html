@@ -1,0 +1,25 @@
+<script type="text/html" data-template-name="ha-tools-qiaodao_jd">
+    <div class="form-row">
+        <label for="node-input-config"> 配置 </label>
+        <input type="text" id="node-input-config" placeholder="不知道别乱填，会把系统搞卡死">
+    </div>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('ha-tools-qiaodao_jd', {
+        category: '我的小工具',
+        color: '#C0DEED',
+        icon: "font-awesome/fa-keyboard-o",
+        paletteLabel: '京东签到',
+        defaults: {
+            config: { value: "", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        label: function () {
+            return "京东签到";
+        },
+        oneditprepare: function () {
+            $("#node-input-config").typedInput({ type: "json", types: ["json"] })
+        }
+    });
+</script>

@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-ha-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "我使用的一些小工具",
   "keywords": [
     "node-red",
@@ -8,6 +8,7 @@
   ],
   "node-red": {
     "nodes": {
+      "qiaodao_jd": "qiaodao_jd/qiaodao_jd.js",
       "bemfa": "bemfa/bemfa.js",
       "xiaodu": "xiaodu/xiaodu.js",
       "yoosee": "yoosee/yoosee.js",
