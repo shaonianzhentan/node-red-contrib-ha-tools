@@ -15,7 +15,7 @@ module.exports = function (RED) {
                 // 签到文件
                 const qdFile = __dirname + '/JD_DailyBonus.js'
                 // 写入配置
-                fs.writeFileSync(qdFile, data.replace("var OtherKey = ``;", "var OtherKey = `" + JSON.stringify(OtherKey) + "`;"))
+                fs.writeFileSync(qdFile, data.replace("var OtherKey = ``;", "var OtherKey = " + JSON.stringify(OtherKey) + ";"))
                 // 执行签到命令
                 const ls = spawn('node', [qdFile]);
                 node.status({ fill: "blue", shape: "ring", text: `开始执行签到命令` });
