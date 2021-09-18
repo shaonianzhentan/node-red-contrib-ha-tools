@@ -33,7 +33,7 @@ module.exports = function (RED) {
                     console.log('退出', code)
                     if (code == 0) {
                         node.status({ fill: "blue", shape: "ring", text: `签到成功` });
-                        node.send({ payload: arr })
+                        node.send({ payload: arr.join('\n') })
                     }
                     // node.status({ fill: "red", shape: "ring", text: `child process exited with code ${code}` });
                 });
