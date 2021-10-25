@@ -144,7 +144,7 @@ module.exports = function (RED) {
                     }
                     node.status({ fill: "green", shape: "ring", text: "发送成功" });
                 } catch (ex) {
-                    node.status({ fill: "red", shape: "ring", text: ex });
+                    node.status({ fill: "red", shape: "ring", text: JSON.stringify(ex) });
                 }
             })
         } else {
