@@ -11,7 +11,7 @@ module.exports = function (RED) {
         // 显示当前输入设备
         node.on('input', function (msg) {
             node.status({ fill: "blue", shape: "ring", text: `开始更新脚本` });
-            axios.get('https://raw.fastgit.org/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js').then(({ data }) => {
+            axios.get('https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js').then(({ data }) => {
                 // 签到文件
                 const qdFile = __dirname + '/JD_DailyBonus.js'
                 // 写入配置
