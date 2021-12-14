@@ -1,0 +1,30 @@
+<script type="text/html" data-template-name="ha-tools-wechat">
+    <div class="form-row">
+        <label for="node-input-server"> 配置</label>
+        <input type="text" id="node-input-server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-uid"> 用户ID </label>
+        <input type="text" id="node-input-uid" placeholder="用户ID" />
+    </div>
+    <div class="form-tips"><b>提示:</b> 
+        一个加密的节点
+    </div>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('ha-tools-wechat', {
+        category: '我的小工具',
+        color: '#C0DEED',
+        icon: "font-awesome/fa-wechat",
+        paletteLabel: '微信消息',
+        defaults: {
+            server: { value: "", type: "ha-tools-ha_config", required: true },
+            uid: { value: "", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        label: function () {
+            return "微信消息";
+        }
+    });
+</script>

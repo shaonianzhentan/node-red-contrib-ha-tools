@@ -12,6 +12,7 @@
       "bemfa": "bemfa/bemfa.js",
       "xiaodu": "xiaodu/xiaodu.js",
       "yoosee": "yoosee/yoosee.js",
+      "wechat": "wechat/wechat.js",
       "screenshot": "screenshot/screenshot.js",
       "ha_config": "ha_config/ha_config.js",
       "call_service": "call_service/call_service.js",

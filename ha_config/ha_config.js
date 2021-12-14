@@ -1,4 +1,5 @@
 const HomeAssistant = require('homeassistant');
+const axios = require('axios')
 
 module.exports = function (RED) {
     RED.nodes.registerType("ha-tools-ha_config", class {
@@ -12,6 +13,8 @@ module.exports = function (RED) {
             if (!port) {
                 port = url.protocol == 'https' ? 443 : 80
             }
+            this.hassUrl = url.origin
+            this.hassToken = token
             this.hass = new HomeAssistant({ host, port, token, ignoreCert: false });
             this.hass.status().then((res) => {
                 console.log(host, res)
@@ -37,6 +40,17 @@ module.exports = function (RED) {
         async fireEvent(event_type, event_data) {
             const res = await this.hass.events.fire(event_type, event_data)
             return res
+        }
+
+        async conversation(text) {
+            const { hassUrl, hassToken } = this
+            const res = await axios.post(`${hassUrl}/api/conversation/process`, { text, conversation_id: Date.now().toString() }, {
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${hassToken}`
+                }
+            })
+            return res.data
         }
     })
 }
