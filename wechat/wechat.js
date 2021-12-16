@@ -11,10 +11,13 @@ module.exports = function (RED) {
                 try {
                     const message = CryptoUtil.decrypt(msg.payload, uid)
                     const { message_id, content } = JSON.parse(message)
-                    const payload = await this.server.conversation(content)
+                    const { speech } = await this.server.conversation(content)
                     node.send({
                         topic: `shaonianzhentan/homeassistant/${message_id}`,
-                        payload
+                        payload: CryptoUtil.encrypt(JSON.stringify({
+                            message_id,
+                            content: speech.plain.speech
+                        }), uid)
                     })
                     node.status({ fill: "green", shape: "ring", text: "解密成功" });
                 } catch (ex) {
