@@ -32,12 +32,25 @@ module.exports = function (RED) {
                     // 加入消息队列
                     list.push({ message_id, time })
 
-                    const { speech } = await this.server.conversation(content)
+                    const res = await this.server.conversation(content)
+
+                    const { speech, extra_data} = res.speech.plain
+                    // 返回结果
+                    let result = speech
+                    // 额外信息
+                    if(extra_data){
+                        if(extra_data.type == 'entity'){
+                            if(Array.isArray(extra_data.data)){
+                                const entity_id = extra_data.data[0]
+                                console.log(entity_id)
+                            }
+                        }
+                    }
                     node.send({
                         topic: `shaonianzhentan/homeassistant/${message_id}`,
                         payload: CryptoUtil.encrypt(JSON.stringify({
                             message_id,
-                            content: speech.plain.speech
+                            content: result
                         }), uid)
                     })
                     node.status({ fill: "green", shape: "ring", text: "解密成功" });
